@@ -20,7 +20,6 @@ Provides: pip-python
 Provides: pip-python3
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(wheel)
-BuildRequires : setuptools-python
 
 %description
 pip - The Python Package Installer

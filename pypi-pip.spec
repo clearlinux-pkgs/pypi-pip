@@ -17,6 +17,7 @@ Requires: pypi-pip-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(wheel)
+Provides: pip
 
 %description
 pip - The Python Package Installer

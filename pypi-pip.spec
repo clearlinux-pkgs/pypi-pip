@@ -4,7 +4,7 @@
 #
 Name     : pypi-pip
 Version  : 22.1.2
-Release  : 144
+Release  : 145
 URL      : https://files.pythonhosted.org/packages/4b/b6/0fa7aa968a9fa4ef63a51b3ff0644e59f49dcd7235b3fd6cceb23f202e08/pip-22.1.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/4b/b6/0fa7aa968a9fa4ef63a51b3ff0644e59f49dcd7235b3fd6cceb23f202e08/pip-22.1.2.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.
@@ -72,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654006670
+export SOURCE_DATE_EPOCH=1656388287
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -139,7 +139,7 @@ rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t32.exe
 rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/w32.exe
 rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/w64.exe
 rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t64.exe
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)

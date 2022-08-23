@@ -4,7 +4,7 @@
 #
 Name     : pypi-pip
 Version  : 22.2.2
-Release  : 151
+Release  : 152
 URL      : https://files.pythonhosted.org/packages/4b/30/e15b806597e67057e07a5acdc135216ccbf76a5f1681a324533b61066b0b/pip-22.2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/4b/30/e15b806597e67057e07a5acdc135216ccbf76a5f1681a324533b61066b0b/pip-22.2.2.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.

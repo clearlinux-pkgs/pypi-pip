@@ -148,7 +148,7 @@ rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t64.exe
 %defattr(-,root,root,-)
 /usr/bin/pip
 /usr/bin/pip3
-/usr/bin/pip3.10
+/usr/bin/pip3.11
 
 %files license
 %defattr(0644,root,root,0755)

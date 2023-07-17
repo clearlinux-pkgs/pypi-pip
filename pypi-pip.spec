@@ -4,10 +4,10 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-pip
-Version  : 23.1.2
-Release  : 163
-URL      : https://files.pythonhosted.org/packages/fa/ee/74ff76da0ab649eec7581233daeb43d8aa35383d8f75317b2ab3b80c922f/pip-23.1.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/fa/ee/74ff76da0ab649eec7581233daeb43d8aa35383d8f75317b2ab3b80c922f/pip-23.1.2.tar.gz
+Version  : 23.2
+Release  : 164
+URL      : https://files.pythonhosted.org/packages/3d/ab/21fa8d1ecf5648559f056fda732b0f9fca0585eb2688252e67f70e74deaf/pip-23.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/3d/ab/21fa8d1ecf5648559f056fda732b0f9fca0585eb2688252e67f70e74deaf/pip-23.2.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause ISC LGPL-2.1 MIT MPL-2.0 Python-2.0
@@ -16,6 +16,8 @@ Requires: pypi-pip-license = %{version}-%{release}
 Requires: pypi-pip-python = %{version}-%{release}
 Requires: pypi-pip-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
+BuildRequires : pypi(setuptools)
+BuildRequires : pypi(wheel)
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -63,10 +65,10 @@ python3 components for the pypi-pip package.
 
 
 %prep
-%setup -q -n pip-23.1.2
-cd %{_builddir}/pip-23.1.2
+%setup -q -n pip-23.2
+cd %{_builddir}/pip-23.2
 pushd ..
-cp -a pip-23.1.2 buildavx2
+cp -a pip-23.2 buildavx2
 popd
 
 %build
@@ -74,15 +76,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682521235
+export SOURCE_DATE_EPOCH=1689613159
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -110,7 +112,7 @@ cp %{_builddir}/pip-%{version}/src/pip/_vendor/idna/LICENSE.md %{buildroot}/usr/
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/msgpack/COPYING %{buildroot}/usr/share/package-licenses/pypi-pip/175e59be229a5bedc6be93e958a970385bb04a62 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/packaging/LICENSE.APACHE %{buildroot}/usr/share/package-licenses/pypi-pip/598f87f072f66e2269dd6919292b2934dbb20492 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/packaging/LICENSE.BSD %{buildroot}/usr/share/package-licenses/pypi-pip/fdc0e4eabc45522b079deff7d03d70528d775dc0 || :
-cp %{_builddir}/pip-%{version}/src/pip/_vendor/pkg_resources/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/8e6689d37f82d5617b7f7f7232c94024d41066d1 || :
+cp %{_builddir}/pip-%{version}/src/pip/_vendor/pkg_resources/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/0445ed0f69910eeaee036f09a39a13c6e1f37e12 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/platformdirs/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/f511a8a63af8c6e36004b593478436bbc560ee0c || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/pygments/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/0c271aeb0199762f47e124c8960b830ad5a97ce0 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/pyparsing/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/df156c6a0a89ed2a3bd4a473c68cf85907509ca0 || :
@@ -121,7 +123,6 @@ cp %{_builddir}/pip-%{version}/src/pip/_vendor/rich/LICENSE %{buildroot}/usr/sha
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/six.LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/ac6ba16d8833b691bbbda7c8eb0c06891c78f98f || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/tenacity/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/1128f8f91104ba9ef98d37eea6523a888dcfa5de || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/tomli/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/9da6ca26337a886fb3e8d30efd4aeda623dc9ade || :
-cp %{_builddir}/pip-%{version}/src/pip/_vendor/typing_extensions.LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/f456f46e1dcbc636c8451a46426568705fe98a98 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/urllib3/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-pip/fae7d86a68e1724238ed64674e4cd743a7dc6796 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/webencodings/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/7fc0f2700538e74dea84d45d0dd3e76f01e8103c || :
 python3 -tt setup.py build  install --root=%{buildroot}
@@ -155,6 +156,7 @@ rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t64.exe
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/pypi-pip/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/pypi-pip/0445ed0f69910eeaee036f09a39a13c6e1f37e12
 /usr/share/package-licenses/pypi-pip/0c271aeb0199762f47e124c8960b830ad5a97ce0
 /usr/share/package-licenses/pypi-pip/1128f8f91104ba9ef98d37eea6523a888dcfa5de
 /usr/share/package-licenses/pypi-pip/151478b5f4a6291addb13da92ef3534597ed39a4
@@ -165,7 +167,6 @@ rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t64.exe
 /usr/share/package-licenses/pypi-pip/79c85e153df486fd6c05a2f7359e1ff6dc288867
 /usr/share/package-licenses/pypi-pip/7fc0f2700538e74dea84d45d0dd3e76f01e8103c
 /usr/share/package-licenses/pypi-pip/866a241848aa26cbcbfd3ca29c4a699faaee0e33
-/usr/share/package-licenses/pypi-pip/8e6689d37f82d5617b7f7f7232c94024d41066d1
 /usr/share/package-licenses/pypi-pip/9da6ca26337a886fb3e8d30efd4aeda623dc9ade
 /usr/share/package-licenses/pypi-pip/aa95e7e0dbe72bae99f41dc862f0516da8ae35c2
 /usr/share/package-licenses/pypi-pip/ac6ba16d8833b691bbbda7c8eb0c06891c78f98f
@@ -175,7 +176,6 @@ rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t64.exe
 /usr/share/package-licenses/pypi-pip/df156c6a0a89ed2a3bd4a473c68cf85907509ca0
 /usr/share/package-licenses/pypi-pip/e8f006df7200afbbdd3a2e7a85e487338dc75073
 /usr/share/package-licenses/pypi-pip/f138a97503337a68b54509f451bfdc3a3c927787
-/usr/share/package-licenses/pypi-pip/f456f46e1dcbc636c8451a46426568705fe98a98
 /usr/share/package-licenses/pypi-pip/f511a8a63af8c6e36004b593478436bbc560ee0c
 /usr/share/package-licenses/pypi-pip/fae7d86a68e1724238ed64674e4cd743a7dc6796
 /usr/share/package-licenses/pypi-pip/fdc0e4eabc45522b079deff7d03d70528d775dc0

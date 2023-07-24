@@ -4,10 +4,10 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-pip
-Version  : 23.2
-Release  : 164
-URL      : https://files.pythonhosted.org/packages/3d/ab/21fa8d1ecf5648559f056fda732b0f9fca0585eb2688252e67f70e74deaf/pip-23.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/3d/ab/21fa8d1ecf5648559f056fda732b0f9fca0585eb2688252e67f70e74deaf/pip-23.2.tar.gz
+Version  : 23.2.1
+Release  : 165
+URL      : https://files.pythonhosted.org/packages/ba/19/e63fb4e0d20e48bd2167bb7e857abc0e21679e24805ba921a224df8977c0/pip-23.2.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/ba/19/e63fb4e0d20e48bd2167bb7e857abc0e21679e24805ba921a224df8977c0/pip-23.2.1.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause ISC LGPL-2.1 MIT MPL-2.0 Python-2.0
@@ -65,10 +65,10 @@ python3 components for the pypi-pip package.
 
 
 %prep
-%setup -q -n pip-23.2
-cd %{_builddir}/pip-23.2
+%setup -q -n pip-23.2.1
+cd %{_builddir}/pip-23.2.1
 pushd ..
-cp -a pip-23.2 buildavx2
+cp -a pip-23.2.1 buildavx2
 popd
 
 %build
@@ -76,7 +76,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689613159
+export SOURCE_DATE_EPOCH=1690211768
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

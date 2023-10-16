@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-pip
-Version  : 23.2.1
-Release  : 168
-URL      : https://files.pythonhosted.org/packages/ba/19/e63fb4e0d20e48bd2167bb7e857abc0e21679e24805ba921a224df8977c0/pip-23.2.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/ba/19/e63fb4e0d20e48bd2167bb7e857abc0e21679e24805ba921a224df8977c0/pip-23.2.1.tar.gz
+Version  : 23.3
+Release  : 169
+URL      : https://files.pythonhosted.org/packages/0d/f6/07ef4561bb911285c229fa46ed3df1877bd6c5325c4c67d516560d59a6e6/pip-23.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/0d/f6/07ef4561bb911285c229fa46ed3df1877bd6c5325c4c67d516560d59a6e6/pip-23.3.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause ISC LGPL-2.1 MIT MPL-2.0 Python-2.0
@@ -27,6 +27,7 @@ pip - The Python Package Installer
 ==================================
 .. image:: https://img.shields.io/pypi/v/pip.svg
 :target: https://pypi.org/project/pip/
+:alt: PyPI
 
 %package bin
 Summary: bin components for the pypi-pip package.
@@ -65,10 +66,10 @@ python3 components for the pypi-pip package.
 
 
 %prep
-%setup -q -n pip-23.2.1
-cd %{_builddir}/pip-23.2.1
+%setup -q -n pip-23.3
+cd %{_builddir}/pip-23.3
 pushd ..
-cp -a pip-23.2.1 buildavx2
+cp -a pip-23.3 buildavx2
 popd
 
 %build
@@ -76,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1697169290
+export SOURCE_DATE_EPOCH=1697471973
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -143,10 +144,11 @@ cp %{_builddir}/pip-%{version}/src/pip/_vendor/rich/LICENSE %{buildroot}/usr/sha
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/six.LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/ac6ba16d8833b691bbbda7c8eb0c06891c78f98f || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/tenacity/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/1128f8f91104ba9ef98d37eea6523a888dcfa5de || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/tomli/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/9da6ca26337a886fb3e8d30efd4aeda623dc9ade || :
+cp %{_builddir}/pip-%{version}/src/pip/_vendor/truststore/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/8700b70e60a895a86d72b16eb1214ef9c51e5cb9 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/typing_extensions.LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/c6e195f9aa30cc9b675d1612ca4fb7f74111bd35 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/urllib3/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-pip/fae7d86a68e1724238ed64674e4cd743a7dc6796 || :
 cp %{_builddir}/pip-%{version}/src/pip/_vendor/webencodings/LICENSE %{buildroot}/usr/share/package-licenses/pypi-pip/7fc0f2700538e74dea84d45d0dd3e76f01e8103c || :
-python3 -m installer --destdir=%{buildroot} dist/*.whl
+pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -156,7 +158,7 @@ CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -m64 -march=x86-64-v3 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -m64 -march=x86-64-v3 "
-python3 -m installer --destdir=%{buildroot}-v3 dist/*.whl
+pip install --root=%{buildroot}-v3 --no-deps --ignore-installed dist/*.whl
 popd
 ## Remove excluded files
 rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t32.exe
@@ -188,6 +190,7 @@ rm -f %{buildroot}*/usr/lib/python3.*/site-packages/pip/_vendor/distlib/t64.exe
 /usr/share/package-licenses/pypi-pip/79c85e153df486fd6c05a2f7359e1ff6dc288867
 /usr/share/package-licenses/pypi-pip/7fc0f2700538e74dea84d45d0dd3e76f01e8103c
 /usr/share/package-licenses/pypi-pip/866a241848aa26cbcbfd3ca29c4a699faaee0e33
+/usr/share/package-licenses/pypi-pip/8700b70e60a895a86d72b16eb1214ef9c51e5cb9
 /usr/share/package-licenses/pypi-pip/9da6ca26337a886fb3e8d30efd4aeda623dc9ade
 /usr/share/package-licenses/pypi-pip/aa95e7e0dbe72bae99f41dc862f0516da8ae35c2
 /usr/share/package-licenses/pypi-pip/ac6ba16d8833b691bbbda7c8eb0c06891c78f98f

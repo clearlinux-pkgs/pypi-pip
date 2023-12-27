@@ -7,7 +7,7 @@
 #
 Name     : pypi-pip
 Version  : 23.3.2
-Release  : 171
+Release  : 172
 URL      : https://files.pythonhosted.org/packages/b7/06/6b1ad0ae8f97d7a0d6f6ad640db10780578999e647a9593512ceb6f06469/pip-23.3.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b7/06/6b1ad0ae8f97d7a0d6f6ad640db10780578999e647a9593512ceb6f06469/pip-23.3.2.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.

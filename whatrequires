@@ -1,6 +1,8 @@
 # This file contains recursive sources that require this package
+compat-python3-rolling
 mozjs102
 mozjs115
+mozjs128
 mozjs91
 pypi-setuptools_scm
 python3

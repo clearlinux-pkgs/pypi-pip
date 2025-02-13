@@ -7,7 +7,7 @@
 #
 Name     : pypi-pip
 Version  : 25.0.1
-Release  : 182
+Release  : 183
 URL      : https://files.pythonhosted.org/packages/70/53/b309b4a497b09655cb7e07088966881a57d082f48ac3cb54ea729fd2c6cf/pip-25.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/70/53/b309b4a497b09655cb7e07088966881a57d082f48ac3cb54ea729fd2c6cf/pip-25.0.1.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.

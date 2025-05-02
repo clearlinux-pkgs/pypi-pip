@@ -6,10 +6,10 @@
 # autospec commit: 9594167
 #
 Name     : pypi-pip
-Version  : 25.1
-Release  : 185
-URL      : https://files.pythonhosted.org/packages/79/67/c06f625e2968c417052b3a4a0eef40656d5d4d44033e57b40ec474af1d28/pip-25.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/79/67/c06f625e2968c417052b3a4a0eef40656d5d4d44033e57b40ec474af1d28/pip-25.1.tar.gz
+Version  : 25.1.1
+Release  : 186
+URL      : https://files.pythonhosted.org/packages/59/de/241caa0ca606f2ec5fe0c1f4261b0465df78d786a38da693864a116c37f4/pip-25.1.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/59/de/241caa0ca606f2ec5fe0c1f4261b0465df78d786a38da693864a116c37f4/pip-25.1.1.tar.gz
 Summary  : The PyPA recommended tool for installing Python packages.
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause ISC MIT MPL-2.0 Python-2.0
@@ -67,13 +67,13 @@ python3 components for the pypi-pip package.
 
 
 %prep
-%setup -q -n pip-25.1
-cd %{_builddir}/pip-25.1
+%setup -q -n pip-25.1.1
+cd %{_builddir}/pip-25.1.1
 pushd ..
-cp -a pip-25.1 buildavx2
+cp -a pip-25.1.1 buildavx2
 popd
 pushd ..
-cp -a pip-25.1 buildapx
+cp -a pip-25.1.1 buildapx
 popd
 
 %build
@@ -81,7 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1745700145
+export SOURCE_DATE_EPOCH=1746224105
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
